@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+# Weather Forecast Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Dự án này là một ứng dụng web dự báo thời tiết được xây dựng bằng ReactJS. Ứng dụng cho phép người dùng tìm kiếm và xem thông tin dự báo thời tiết cho các thành phố khác nhau.
 
-## Available Scripts
+## Nội dung
 
-In the project directory, you can run:
+- [Yêu cầu](#yêu-cầu)
+- [Cài đặt](#cài-đặt)
+  - [1. Build Bình Thường](#1-build-bình-thường)
+  - [2. Build với Docker](#2-build-với-docker)
+    - [A. Sử dụng Dockerfile](#a-sử-dụng-dockerfile)
+    - [B. Sử dụng Docker Compose](#b-sử-dụng-docker-compose)
+- [Chạy Ứng Dụng](#chạy-ứng-dụng)
+- [Tài liệu thêm](#tài-liệu-thêm)
 
-### `npm start`
+## Yêu cầu
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node.js 14 trở lên
+- npm hoặc yarn
+- Docker (nếu bạn muốn sử dụng Docker)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Cài đặt
 
-### `npm test`
+### 1. Build Bình Thường
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Để build và chạy dự án bình thường mà không cần Docker, bạn cần làm theo các bước sau:
 
-### `npm run build`
+1. **Clone Repository:**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```bash
+   git clone https://github.com/ngovanlau/weather-forecast-web.git
+   cd weather-forecast-web
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Cài Đặt Các Gói Cần Thiết:**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   Nếu bạn sử dụng npm:
 
-### `npm run eject`
+   ```bash
+   npm install
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   Nếu bạn sử dụng yarn:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   ```bash
+   yarn install
+   ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Chạy Ứng Dụng:**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+   Nếu bạn sử dụng npm:
 
-## Learn More
+   ```bash
+   npm start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   Nếu bạn sử dụng yarn:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   ```bash
+   yarn start
+   ```
 
-### Code Splitting
+   Ứng dụng sẽ chạy tại `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### 2. Build với Docker
 
-### Analyzing the Bundle Size
+Bạn có thể build và chạy dự án bằng Docker bằng cách sử dụng Dockerfile hoặc Docker Compose.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### A. Sử dụng Dockerfile
 
-### Making a Progressive Web App
+1. **Clone Repository:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+   ```bash
+   git clone https://github.com/ngovanlau/weather-forecast-web.git
+   cd weather-forecast-web
+   ```
 
-### Advanced Configuration
+2. **Build Image Docker:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+   ```bash
+   docker build -t weather-forecast-web .
+   ```
 
-### Deployment
+3. **Chạy Container:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+   ```bash
+   docker run -d -p 3000:3000 weather-forecast-web
+   ```
 
-### `npm run build` fails to minify
+   Sau khi chạy, bạn có thể truy cập ứng dụng tại `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### B. Sử dụng Docker Compose
+
+1. **Clone Repository:**
+
+   ```bash
+   git clone https://github.com/ngovanlau/weather-forecast-web.git
+   cd weather-forecast-web
+   ```
+
+2. **Chạy Dự Án bằng Docker Compose:**
+
+   ```bash
+   docker-compose up --build
+   ```
+
+   Docker Compose sẽ tự động build và chạy dự án. Sau khi hoàn tất, bạn có thể truy cập ứng dụng tại `http://localhost:3000`.
+
+## Chạy Ứng Dụng
+
+Sau khi ứng dụng đã chạy, bạn có thể truy cập vào ứng dụng dự báo thời tiết tại địa chỉ `http://localhost:3000`.
+
+## Tài liệu thêm
+
+- [React Documentation](https://reactjs.org/docs/getting-started.html)
+- [Docker Documentation](https://docs.docker.com/)
+- [Docker Compose Documentation](https://docs.docker.com/compose/)
+
+**Ngô Văn Lâu**  
+Email: ngovanlau2003@gmail.com
