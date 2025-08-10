@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Header from "./components/header";
 import CitySearch from "./components/city-search";
 import MainForecast from "./components/main-forecast";
@@ -19,28 +19,31 @@ function App() {
 	const dispatch = useDispatch();
 	const [page, setPage] = useState(1);
 
-	const loadData = async (city, page) => {
-		try {
-			let url;
-			if (page != null) {
-				url = `${endpoints["forecastData"](city)}?page=${page}`;
-			} else {
-				url = `${endpoints["forecastData"](city)}`;
-			}
+	const loadData = useCallback(
+		async (city, page) => {
+			try {
+				let url;
+				if (page != null) {
+					url = `${endpoints["forecastData"](city)}?page=${page}`;
+				} else {
+					url = `${endpoints["forecastData"](city)}`;
+				}
 
-			let res = await api.get(url);
-			dispatch(setCity(res.data.city || ""));
-			dispatch(setCurrentForecast(res.data.current_forecast || {}));
-			dispatch(setForecasts(res.data.forecasts || []));
-			dispatch(setTotalPage(res.data.total_page || 0));
-		} catch (error) {
-			console.error("Error fetching data:", error);
-		}
-	};
+				let res = await api.get(url);
+				dispatch(setCity(res.data.city || ""));
+				dispatch(setCurrentForecast(res.data.current_forecast || {}));
+				dispatch(setForecasts(res.data.forecasts || []));
+				dispatch(setTotalPage(res.data.total_page || 0));
+			} catch (error) {
+				console.error("Error fetching data:", error);
+			}
+		},
+		[dispatch]
+	);
 
 	useEffect(() => {
 		loadData("Ho Chi Minh City");
-	}, []);
+	}, [loadData]);
 
 	const handleChangePage = (e, value) => {
 		setPage(value);
