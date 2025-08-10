@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
 import { Alert, Divider, Snackbar } from "@mui/material";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
 	setCity,
 	setCurrentForecast,

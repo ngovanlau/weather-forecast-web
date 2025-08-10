@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function SecondaryForecast({ forecast }) {
 	return (
 		<div className="flex flex-col text-white p-6 bg-[var(--grey)] rounded-md">

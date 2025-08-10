@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Header() {
 	return (
 		<div className="bg-[#5372f0] py-6 flex justify-center">

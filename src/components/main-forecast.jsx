@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function MainForecast({ city, currentForecast }) {
 	return (
 		<div className="flex justify-between items-center text-white p-6 bg-[var(--blue)] rounded-md">
