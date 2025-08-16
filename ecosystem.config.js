@@ -1,12 +1,16 @@
 module.exports = {
 	apps: [
 		{
-			name: "my-app",
-			script: "server.js",
+			name: "weather-forecast-app",
+			script: "serve",
+			args: "-s build --listen 3000",
 			env: {
 				NODE_ENV: "production",
-				REACT_APP_BASE_URL: "http://localhost:8000",
 			},
+			instances: 1,
+			autorestart: true,
+			watch: false,
+			max_memory_restart: "1G",
 		},
 	],
 };
